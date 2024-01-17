@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="dc6cd946-3d88-4699-b723-f5fc0ffd3d3d" activeEnvironment="Default" name="Test-Soap-connecteur" soapui-version="5.7.2" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="fb1613d0-9694-4668-90b1-b6bb2307e2b3" wsaVersion="NONE" name="PatientSoapServiceServiceSoapBinding" type="wsdl" bindingName="{http://web.patientmanagementservice.sid.org/}PatientSoapServiceServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8083/services/PatientManagementService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8083/services/PatientManagementService?wsdl"><con:part><con:url>http://localhost:8083/services/PatientManagementService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="PatientSoapServiceService" targetNamespace="http://web.patientmanagementservice.sid.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://web.patientmanagementservice.sid.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://web.patientmanagementservice.sid.org/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="patientById" type="tns:patientById"/>
+      <xs:element name="patientByIdResponse" type="tns:patientByIdResponse"/>
+      <xs:element name="patientList" type="tns:patientList"/>
+      <xs:element name="patientListResponse" type="tns:patientListResponse"/>
+      <xs:element name="savePatient" type="tns:savePatient"/>
+      <xs:element name="savePatientResponse" type="tns:savePatientResponse"/>
+      <xs:complexType name="patientById">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="patientByIdResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:patient"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="patient">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="description_diagnostic" type="xs:string"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="patientList">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="patientListResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:patient"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="savePatient">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="patient" type="tns:patientDto"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="patientDto">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="savePatientResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:patient"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="patientList">
+    <wsdl:part element="tns:patientList" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="patientListResponse">
+    <wsdl:part element="tns:patientListResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="savePatient">
+    <wsdl:part element="tns:savePatient" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="patientByIdResponse">
+    <wsdl:part element="tns:patientByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="savePatientResponse">
+    <wsdl:part element="tns:savePatientResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="patientById">
+    <wsdl:part element="tns:patientById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PatientSoapService">
+    <wsdl:operation name="patientById">
+      <wsdl:input message="tns:patientById" name="patientById"></wsdl:input>
+      <wsdl:output message="tns:patientByIdResponse" name="patientByIdResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="patientList">
+      <wsdl:input message="tns:patientList" name="patientList"></wsdl:input>
+      <wsdl:output message="tns:patientListResponse" name="patientListResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="savePatient">
+      <wsdl:input message="tns:savePatient" name="savePatient"></wsdl:input>
+      <wsdl:output message="tns:savePatientResponse" name="savePatientResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PatientSoapServiceServiceSoapBinding" type="tns:PatientSoapService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="patientById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="patientById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="patientByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="patientList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="patientList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="patientListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="savePatient">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="savePatient">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="savePatientResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PatientSoapServiceService">
+    <wsdl:port binding="tns:PatientSoapServiceServiceSoapBinding" name="PatientSoapServicePort">
+      <soap:address location="http://localhost:8083/services/PatientManagementService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8083/services/PatientManagementService</con:endpoint></con:endpoints><con:operation id="6e13feb9-9dc4-4595-a312-bf853b54e831" isOneWay="false" action="" name="patientById" bindingOperationName="patientById" type="Request-Response" outputName="patientByIdResponse" inputName="patientById" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cf77fb20-fe97-43da-a6a3-fb53f0cf978b" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8083/services/PatientManagementService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://web.patientmanagementservice.sid.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:patientById>\r
+         <!--Optional:-->\r
+         <id>2</id>\r
+      </web:patientById>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://web.patientmanagementservice.sid.org/PatientSoapService/patientById"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="77e5a39b-c232-4998-bf07-374feff7099a" isOneWay="false" action="" name="patientList" bindingOperationName="patientList" type="Request-Response" outputName="patientListResponse" inputName="patientList" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="db2c7d16-2c87-405e-91d9-162d57213f54" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8083/services/PatientManagementService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://web.patientmanagementservice.sid.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:patientList/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://web.patientmanagementservice.sid.org/PatientSoapService/patientList"/></con:call></con:operation><con:operation id="3cd02366-d773-4116-b00c-c7610f255e12" isOneWay="false" action="" name="savePatient" bindingOperationName="savePatient" type="Request-Response" outputName="savePatientResponse" inputName="savePatient" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="655f207e-465e-4231-bdb0-5b80e0e4728b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8083/services/PatientManagementService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://web.patientmanagementservice.sid.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <web:savePatient>\r
+         <!--Optional:-->\r
+         <patient/>\r
+      </web:savePatient>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://web.patientmanagementservice.sid.org/PatientSoapService/savePatient"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

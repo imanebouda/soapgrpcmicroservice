@@ -1,0 +1,40 @@
+syntax="proto3";
+option java_package="org.sid.patientmanagementservice.stub";
+service PatientService{
+  rpc getAllPatients(GetAllPatientsRequest) returns (GetAllPatientsResponse);
+  rpc getPatientById(GetPatientByIdRequest) returns (GetPatientByIdResponse);
+  rpc savePatient(SavePatientRequest) returns (SavePatientResponse);
+}
+
+message GetAllPatientsRequest{}
+
+message GetAllPatientsResponse{
+  repeated Patient patients=1; //repeated c'est pour recevoir une liste
+}
+
+message Patient{
+  int64 id=1;
+  string name=2;
+  string email=3;
+}
+
+message GetPatientByIdRequest{
+  int64 patientId=1;
+}
+
+message GetPatientByIdResponse{
+  Patient patient=1;
+}
+
+message SavePatientRequest{
+  PatientRequest patient=1;
+}
+
+message PatientRequest{
+  string name=1;
+  string email=2;
+}
+
+message SavePatientResponse{
+  Patient patient=1;
+}
